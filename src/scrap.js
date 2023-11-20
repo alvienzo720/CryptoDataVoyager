@@ -1,6 +1,6 @@
 import googleNewsScraper from "google-news-scraper";
 
-export async function fetchCryptoNews(searchTerm) {
+async function fetchCryptoNews(searchTerm) {
   try {
     const articles = await googleNewsScraper({
       searchTerm: searchTerm,
@@ -14,11 +14,11 @@ export async function fetchCryptoNews(searchTerm) {
       puppeteerArgs: [],
     });
     console.log("Articles", articles);
-    const LastTenArticles = articles.slice(0, 10);
-    console.log("Last Articles", LastTenArticles);
+// console.log("Last Articles", LastTenArticles);
+    return articles.slice(0,10)
   } catch (error) {
     console.error("Error fetching news", error);
   }
 }
 
-fetchCryptoNews("Python");
+export default fetchCryptoNews;
