@@ -1,23 +1,23 @@
-import googleNewsScraper from "google-news-scraper"
+import express from "express";
+import bot from "./bot.js"
 
+const app = express();
 
-async function fetchCryptoNews() {
+const start = async () => {
+  console.log(`---`.repeat(10));
+  console.log(`starting bot  🤖 `);
+  console.log(`---`.repeat(10));
+
   try {
-    const articles = await googleNewsScraper({
-      searchTerm: "Crypto", 
-      prettyURLs: true,
-      queryVars: {
-        hl: "en-US",
-        gl: "US",
-        ceid: "US:en",
-      },
-      timeframe: "1d",
-      puppeteerArgs: [], 
-    });
-    console.log("Articles", articles);
+    await bot.launch();
+    console.log("Bot launched successfully.");
   } catch (error) {
-    console.error("Error fetching news", error);
+    console.error("Error launching bot:", error);
   }
-}
+};
 
-fetchCryptoNews();
+start();
+
+app.listen(5000, () => {
+  console.log("Server listening on port 5000! We are Good to go 👍");
+});
