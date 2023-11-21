@@ -26,7 +26,7 @@ bot.on("text", async (ctx) => {
       try {
         ctx.replyWithPhoto(article.image);
         ctx.reply(caption);
-        await delay(5000); // Delay of 1 second between articles
+        await delay(9000); // Delay of 1 second between articles
       } catch (error) {
         console.error("Error sending article:", error);
         // Optionally notify the user about the failed article
